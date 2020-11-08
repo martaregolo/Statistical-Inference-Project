@@ -1,15 +1,4 @@
----
-title: "Statistical Inference Course Project 2"
-author: "Marta Regolo"
-output: rmarkdown::github_document
----
 
-```{r setup, include=FALSE}
-library(datasets)
-library(ggplot2)
-library(dplyr)
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 # Part 2: Basic Inferential Data Analysis 
 
@@ -20,25 +9,18 @@ First, we load the ToothGrowth data and we perform some basic exploratory data a
 ```{r}
 data(ToothGrowth)
 ```
+
 ```{r echo=FALSE}
 ToothGrowth$dose<-factor(ToothGrowth$dose)
 ```
 ```{r}
 summary(ToothGrowth)
 ```
-<div align="center">
-```{r echo=FALSE}
-ggplot(ToothGrowth, aes(x=dose,y=len))+geom_boxplot()+facet_wrap(~supp)
-```
-</div>
+![](plots/Part2_1.PNG)
 
 Secondly, we use hypothesis tests to compare growth by supp.
 
-<div align="center">
-```{r echo=FALSE}
-ggplot(ToothGrowth, aes(x=supp,y=len))+geom_boxplot()
-```
-</div>
+![](plots/Part2_2.PNG)
 
 We perform a t-test for the two independent group of observations.
 ```{r}
@@ -49,11 +31,7 @@ We can see that the p-value is slightly above 0.05, so we are in the acceptance 
 
 Next, we analyze the difference due to the three dose levels of vitamin C (0.5, 1, and 2 mg/day).
 
-<div align="center">
-```{r echo=FALSE}
-ggplot(ToothGrowth, aes(x=dose,y=len))+geom_boxplot()
-```
-</div>
+![](plots/Part2_3.PNG)
 
 We can see that there is a significant difference between the three dose levels.
 
@@ -61,12 +39,7 @@ So, we try to see if there is a significant difference in means due to the deliv
 
 
 
-<div align="center">
-```{r echo=FALSE}
-dose05<-ToothGrowth[ToothGrowth$dose=="0.5",]
-ggplot(dose05, aes(x=supp,y=len))+geom_boxplot()
-```
-</div>
+![](plots/Part2_4.PNG)
 
 We perform a t-test for the two independent group of observations.
 ```{r}
@@ -77,12 +50,7 @@ We fail to reject the null hypotesis, so the difference in mean is equal to 0.
 
 ### Dose Level = 1.0
 
-<div align="center">
-```{r echo=FALSE}
-dose1<-ToothGrowth[ToothGrowth$dose=="1",]
-ggplot(dose1, aes(x=supp,y=len))+geom_boxplot()
-```
-</div>
+![](plots/Part2_5.PNG)
 
 We perform a t-test for the two independent group of observations.
 ```{r}
@@ -93,12 +61,7 @@ We reject the null hypotesis, so the difference in mean is different from 0.
 
 ### Dose Level = 2
 
-<div align="center">
-```{r echo=FALSE}
-dose2<-ToothGrowth[ToothGrowth$dose=="2",]
-ggplot(dose2, aes(x=supp,y=len))+geom_boxplot()
-```
-</div>
+![](plots/Part2_6.PNG)
 
 We perform a t-test for the two independent group of observations.
 ```{r}
