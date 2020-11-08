@@ -1,14 +1,3 @@
----
-title: "Statistical Inference Course Project"
-author: "Marta Regolo"
-output: html_document
----
-
-```{r setup, include=FALSE}
-library(goftest)
-library(ggpubr)
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 # Part 1: Simulation 
 
@@ -60,45 +49,25 @@ and the theoretical standard deviation is:
 ```{r echo=FALSE}
 sd/sqrt(n)
 ```
+![](plots/Part1_1.PNG)
 
-<div align="center">
-```{r echo=FALSE}
-hist(means,breaks=30,xlab="x")
-abline(v=mean(means),col="red",lwd=3)
-abline(v=mu,col="green",lwd=3)
-legend("topright",c("Sample mean","Theoretical mean"),col=c("red","green"),lwd=5)
-```
-</div>
 
 If we compare the distribution of 1000 random exponential and the histogram above, we can see that the histogram above is far more Gaussian than the original distribution!
-<div align="center">
-```{r echo=FALSE}
-hist(rexp(B,lambda),breaks=30,xlab="x",main="Exponential distribution")
-```
-</div>
+
+![](plots/Part1_2.PNG)
 
 ## Normality test
 
 To show if the distribution of means is approximately normal we can use qualitative and visual methods. First, we plot a normal density function with mean `mean(means)` and standard deviation `sd(means)` over the previous histogram.
 
-<div align="center">
-```{r echo=FALSE}
-hist(means,prob=TRUE,breaks=30,xlab="x",main="Normal distributions comparison")
-curve(dnorm(x,mean=mean(means),sd=sd(means)),add=TRUE, col="red",lwd=3)
-lines(density(means),lwd=3)
-legend("topright",c("Sample density function","Theoretical density function"),col=c("black","red"),lwd=5)
-```
-</div>
+![](plots/Part1_3.PNG)
 
 We can see that the distribution is approximately normal. 
 
 Second, we use a Q-Q plot (or quantile-quantile plot) that draws the correlation between the given sample and the normal distribution.
 
-<div align="center">
-```{r echo=FALSE}
-ggqqplot(means)
-```
-</div>
+![](plots/Part1_4.PNG)
+
 Moreover, we can perform an Anderson-Darling test, for an accurate result.
 
 ```{r}
