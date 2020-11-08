@@ -1,7 +1,7 @@
 ---
 title: "Statistical Inference Course Project 2"
 author: "Marta Regolo"
-output: html_document
+output: output: rmarkdown::github_document
 ---
 
 ```{r setup, include=FALSE}
